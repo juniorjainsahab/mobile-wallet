@@ -40,8 +40,12 @@ public class NotificationPresenter implements NotificationContract.NotificationP
                 new UseCase.UseCaseCallback<FetchNotifications.ResponseValue>() {
                     @Override
                     public void onSuccess(FetchNotifications.ResponseValue response) {
-                        mNotificationView.fetchNotificationsSuccess(
-                                response.getNotificationPayloadList());
+                        if(response.getNotificationPayloadList().isEmpty()){
+                            mNotificationView.showNoNotificationMessage();
+                        }else {
+                            mNotificationView.fetchNotificationsSuccess(
+                                    response.getNotificationPayloadList());
+                        }
                     }
 
                     @Override

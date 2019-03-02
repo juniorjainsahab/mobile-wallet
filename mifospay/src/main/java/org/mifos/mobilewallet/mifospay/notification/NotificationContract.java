@@ -22,5 +22,7 @@ public interface NotificationContract {
         void fetchNotificationsSuccess(List<NotificationPayload> notificationPayloadList);
 
         void fetchNotificationsError(String message);
+
+        void showNoNotificationMessage();
     }
 }

@@ -1,10 +1,12 @@
 package org.mifos.mobilewallet.mifospay.notification.ui;
 
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import org.mifos.mobilewallet.core.domain.model.NotificationPayload;
 import org.mifos.mobilewallet.mifospay.R;
@@ -89,6 +91,14 @@ public class NotificationActivity extends BaseActivity implements
     public void fetchNotificationsError(String message) {
         hideSwipeProgress();
         showToast(message);
+    }
+
+    @Override
+    public void showNoNotificationMessage() {
+        View noNotificationsTextView = findViewById(R.id.no_notifications);
+        swipeLayout.setVisibility(View.GONE);
+        hideSwipeProgress();
+        noNotificationsTextView.setVisibility(View.VISIBLE);
     }
 
     public void showToast(String message) {
